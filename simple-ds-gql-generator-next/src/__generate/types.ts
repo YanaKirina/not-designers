@@ -1056,16 +1056,169 @@ export type _UpdateVolonteerInput = {
   person?: InputMaybe<_SingleReferenceInput>;
 };
 
-export type PersonAttributesFragment = { __typename: '_E_Person', id: string, firstName: string, lastName: string, birthDate?: any | null };
+export type EventAttributesFragment = { __typename: '_E_Event', id: string, description: string, endDateTime?: any | null, startDateTime?: any | null, aggregateRoot?: { __typename?: '_E_Organization', id: string } | null, organization: { __typename?: '_E_Organization', id: string }, statusForX: { __typename?: '_G_SysStatusFields', code?: string | null, reason?: string | null } };
+
+export type SearchEventQueryVariables = Exact<{
+  cond?: InputMaybe<Scalars['String']['input']>;
+}>;
+
+
+export type SearchEventQuery = { __typename?: '_Query', searchEvent: { __typename?: '_EC_Event', elems: Array<{ __typename: '_E_Event', id: string, description: string, endDateTime?: any | null, startDateTime?: any | null, aggregateRoot?: { __typename?: '_E_Organization', id: string } | null, organization: { __typename?: '_E_Organization', id: string }, statusForX: { __typename?: '_G_SysStatusFields', code?: string | null, reason?: string | null } }> } };
+
+export type GetForUpdateEventMutationVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type GetForUpdateEventMutation = { __typename?: '_Mutation', packet?: { __typename?: '_Packet', getEvent?: { __typename: '_E_Event', id: string, description: string, endDateTime?: any | null, startDateTime?: any | null, aggregateRoot?: { __typename?: '_E_Organization', id: string } | null, organization: { __typename?: '_E_Organization', id: string }, statusForX: { __typename?: '_G_SysStatusFields', code?: string | null, reason?: string | null } } | null } | null };
+
+export type CreateEventMutationVariables = Exact<{
+  input: _CreateEventInput;
+}>;
+
+
+export type CreateEventMutation = { __typename?: '_Mutation', packet?: { __typename?: '_Packet', createEvent?: { __typename: '_E_Event', id: string, description: string, endDateTime?: any | null, startDateTime?: any | null, aggregateRoot?: { __typename?: '_E_Organization', id: string } | null, organization: { __typename?: '_E_Organization', id: string }, statusForX: { __typename?: '_G_SysStatusFields', code?: string | null, reason?: string | null } } | null } | null };
+
+export type UpdateEventMutationVariables = Exact<{
+  input: _UpdateEventInput;
+}>;
+
+
+export type UpdateEventMutation = { __typename?: '_Mutation', packet?: { __typename?: '_Packet', updateEvent?: { __typename: '_E_Event', id: string, description: string, endDateTime?: any | null, startDateTime?: any | null, aggregateRoot?: { __typename?: '_E_Organization', id: string } | null, organization: { __typename?: '_E_Organization', id: string }, statusForX: { __typename?: '_G_SysStatusFields', code?: string | null, reason?: string | null } } | null } | null };
+
+export type DeleteEventMutationVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type DeleteEventMutation = { __typename?: '_Mutation', packet?: { __typename?: '_Packet', deleteEvent?: string | null } | null };
+
+export type OrganizationAttributesFragment = { __typename: '_E_Organization', id: string, name: string };
+
+export type SearchOrganizationQueryVariables = Exact<{
+  cond?: InputMaybe<Scalars['String']['input']>;
+}>;
+
+
+export type SearchOrganizationQuery = { __typename?: '_Query', searchOrganization: { __typename?: '_EC_Organization', elems: Array<{ __typename: '_E_Organization', id: string, name: string }> } };
+
+export type GetForUpdateOrganizationMutationVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type GetForUpdateOrganizationMutation = { __typename?: '_Mutation', packet?: { __typename?: '_Packet', getOrganization?: { __typename: '_E_Organization', id: string, name: string } | null } | null };
+
+export type CreateOrganizationMutationVariables = Exact<{
+  input: _CreateOrganizationInput;
+}>;
+
+
+export type CreateOrganizationMutation = { __typename?: '_Mutation', packet?: { __typename?: '_Packet', createOrganization?: { __typename: '_E_Organization', id: string, name: string } | null } | null };
+
+export type UpdateOrganizationMutationVariables = Exact<{
+  input: _UpdateOrganizationInput;
+}>;
+
+
+export type UpdateOrganizationMutation = { __typename?: '_Mutation', packet?: { __typename?: '_Packet', updateOrganization?: { __typename: '_E_Organization', id: string, name: string } | null } | null };
+
+export type DeleteOrganizationMutationVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type DeleteOrganizationMutation = { __typename?: '_Mutation', packet?: { __typename?: '_Packet', deleteOrganization?: string | null } | null };
+
+export type VolonteerEventRequestAttributesFragment = { __typename: '_E_VolonteerEventRequest', id: string, description?: string | null, aggregateRoot?: { __typename?: '_E_Volonteer', id: string } | null, event: { __typename?: '_G_EventReference', entityId?: string | null }, statusForX: { __typename?: '_G_SysStatusFields', code?: string | null, reason?: string | null }, volonteer: { __typename?: '_E_Volonteer', id: string } };
+
+export type SearchVolonteerEventRequestQueryVariables = Exact<{
+  cond?: InputMaybe<Scalars['String']['input']>;
+}>;
+
+
+export type SearchVolonteerEventRequestQuery = { __typename?: '_Query', searchVolonteerEventRequest: { __typename?: '_EC_VolonteerEventRequest', elems: Array<{ __typename: '_E_VolonteerEventRequest', id: string, description?: string | null, aggregateRoot?: { __typename?: '_E_Volonteer', id: string } | null, event: { __typename?: '_G_EventReference', entityId?: string | null }, statusForX: { __typename?: '_G_SysStatusFields', code?: string | null, reason?: string | null }, volonteer: { __typename?: '_E_Volonteer', id: string } }> } };
+
+export type GetForUpdateVolonteerEventRequestMutationVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type GetForUpdateVolonteerEventRequestMutation = { __typename?: '_Mutation', packet?: { __typename?: '_Packet', getVolonteerEventRequest?: { __typename: '_E_VolonteerEventRequest', id: string, description?: string | null, aggregateRoot?: { __typename?: '_E_Volonteer', id: string } | null, event: { __typename?: '_G_EventReference', entityId?: string | null }, statusForX: { __typename?: '_G_SysStatusFields', code?: string | null, reason?: string | null }, volonteer: { __typename?: '_E_Volonteer', id: string } } | null } | null };
+
+export type CreateVolonteerEventRequestMutationVariables = Exact<{
+  input: _CreateVolonteerEventRequestInput;
+}>;
+
+
+export type CreateVolonteerEventRequestMutation = { __typename?: '_Mutation', packet?: { __typename?: '_Packet', createVolonteerEventRequest?: { __typename: '_E_VolonteerEventRequest', id: string, description?: string | null, aggregateRoot?: { __typename?: '_E_Volonteer', id: string } | null, event: { __typename?: '_G_EventReference', entityId?: string | null }, statusForX: { __typename?: '_G_SysStatusFields', code?: string | null, reason?: string | null }, volonteer: { __typename?: '_E_Volonteer', id: string } } | null } | null };
+
+export type UpdateVolonteerEventRequestMutationVariables = Exact<{
+  input: _UpdateVolonteerEventRequestInput;
+}>;
+
+
+export type UpdateVolonteerEventRequestMutation = { __typename?: '_Mutation', packet?: { __typename?: '_Packet', updateVolonteerEventRequest?: { __typename: '_E_VolonteerEventRequest', id: string, description?: string | null, aggregateRoot?: { __typename?: '_E_Volonteer', id: string } | null, event: { __typename?: '_G_EventReference', entityId?: string | null }, statusForX: { __typename?: '_G_SysStatusFields', code?: string | null, reason?: string | null }, volonteer: { __typename?: '_E_Volonteer', id: string } } | null } | null };
+
+export type DeleteVolonteerEventRequestMutationVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type DeleteVolonteerEventRequestMutation = { __typename?: '_Mutation', packet?: { __typename?: '_Packet', deleteVolonteerEventRequest?: string | null } | null };
+
+export type PersonAttributesFragment = { __typename: '_E_Person', id: string, birthDate?: any | null, firstName: string, lastName: string };
+
+export type SearchPersonQueryVariables = Exact<{
+  cond?: InputMaybe<Scalars['String']['input']>;
+}>;
+
+
+export type SearchPersonQuery = { __typename?: '_Query', searchPerson: { __typename?: '_EC_Person', elems: Array<{ __typename: '_E_Person', id: string, birthDate?: any | null, firstName: string, lastName: string }> } };
+
+export type GetForUpdatePersonMutationVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type GetForUpdatePersonMutation = { __typename?: '_Mutation', packet?: { __typename?: '_Packet', getPerson?: { __typename: '_E_Person', id: string, birthDate?: any | null, firstName: string, lastName: string } | null } | null };
 
 export type CreatePersonMutationVariables = Exact<{
   input: _CreatePersonInput;
 }>;
 
 
-export type CreatePersonMutation = { __typename?: '_Mutation', packet?: { __typename?: '_Packet', createPerson?: { __typename: '_E_Person', id: string, firstName: string, lastName: string, birthDate?: any | null } | null } | null };
+export type CreatePersonMutation = { __typename?: '_Mutation', packet?: { __typename?: '_Packet', createPerson?: { __typename: '_E_Person', id: string, birthDate?: any | null, firstName: string, lastName: string } | null } | null };
+
+export type UpdatePersonMutationVariables = Exact<{
+  input: _UpdatePersonInput;
+}>;
+
+
+export type UpdatePersonMutation = { __typename?: '_Mutation', packet?: { __typename?: '_Packet', updatePerson?: { __typename: '_E_Person', id: string, birthDate?: any | null, firstName: string, lastName: string } | null } | null };
+
+export type DeletePersonMutationVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type DeletePersonMutation = { __typename?: '_Mutation', packet?: { __typename?: '_Packet', deletePerson?: string | null } | null };
 
 export type VolonteerAttributesFragment = { __typename: '_E_Volonteer', id: string, nickName?: string | null, person: { __typename?: '_G_PersonReference', entityId?: string | null } };
+
+export type SearchVolonteerQueryVariables = Exact<{
+  cond?: InputMaybe<Scalars['String']['input']>;
+}>;
+
+
+export type SearchVolonteerQuery = { __typename?: '_Query', searchVolonteer: { __typename?: '_EC_Volonteer', elems: Array<{ __typename: '_E_Volonteer', id: string, nickName?: string | null, person: { __typename?: '_G_PersonReference', entityId?: string | null } }> } };
+
+export type GetForUpdateVolonteerMutationVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type GetForUpdateVolonteerMutation = { __typename?: '_Mutation', packet?: { __typename?: '_Packet', getVolonteer?: { __typename: '_E_Volonteer', id: string, nickName?: string | null, person: { __typename?: '_G_PersonReference', entityId?: string | null } } | null } | null };
 
 export type CreateVolonteerMutationVariables = Exact<{
   input: _CreateVolonteerInput;
@@ -1073,3 +1226,17 @@ export type CreateVolonteerMutationVariables = Exact<{
 
 
 export type CreateVolonteerMutation = { __typename?: '_Mutation', packet?: { __typename?: '_Packet', createVolonteer?: { __typename: '_E_Volonteer', id: string, nickName?: string | null, person: { __typename?: '_G_PersonReference', entityId?: string | null } } | null } | null };
+
+export type UpdateVolonteerMutationVariables = Exact<{
+  input: _UpdateVolonteerInput;
+}>;
+
+
+export type UpdateVolonteerMutation = { __typename?: '_Mutation', packet?: { __typename?: '_Packet', updateVolonteer?: { __typename: '_E_Volonteer', id: string, nickName?: string | null, person: { __typename?: '_G_PersonReference', entityId?: string | null } } | null } | null };
+
+export type DeleteVolonteerMutationVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type DeleteVolonteerMutation = { __typename?: '_Mutation', packet?: { __typename?: '_Packet', deleteVolonteer?: string | null } | null };
