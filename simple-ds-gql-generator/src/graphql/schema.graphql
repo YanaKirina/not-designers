@@ -149,7 +149,7 @@ type _DictionaryPacket {
 
 input _DoubleReferenceInput {
   entityId: String!
-  rootEntityId: String
+  rootEntityId: String!
 }
 
 type _E_Event implements _Entity & Event {
@@ -385,15 +385,15 @@ type _Packet {
 }
 
 type _Query {
-  merge(limit: Int, offset: Int, sort: [_SortCriterionSpecification!]): _MergedEntitiesCollection!
   resolveReferences(referenceType: String!, ids: [ID!]!): [_Reference!]!
+  strExpr(chars: [Char!], strings: [String!], bytes: [Byte!], shorts: [Short!], ints: [Int!], longs: [Long!], floats: [_Float4!], doubles: [Float!], bigDecimals: [BigDecimal!], dates: [_Date!], dateTimes: [_DateTime!], offsetDateTimes: [_OffsetDateTime!], times: [_Time!], booleans: [Boolean!]): String
   searchEvent(cond: String, limit: Int, offset: Int, sort: [_SortCriterionSpecification!]): _EC_Event!
   searchOrganization(cond: String, limit: Int, offset: Int, sort: [_SortCriterionSpecification!]): _EC_Organization!
   searchPerson(cond: String, limit: Int, offset: Int, sort: [_SortCriterionSpecification!]): _EC_Person!
   searchVolonteer(cond: String, limit: Int, offset: Int, sort: [_SortCriterionSpecification!]): _EC_Volonteer!
   searchVolonteerEventRequest(cond: String, limit: Int, offset: Int, sort: [_SortCriterionSpecification!]): _EC_VolonteerEventRequest!
   searchRootDictionary(cond: String, limit: Int, offset: Int, sort: [_SortCriterionSpecification!]): _EC_RootDictionary!
-  strExpr(chars: [Char!], strings: [String!], bytes: [Byte!], shorts: [Short!], ints: [Int!], longs: [Long!], floats: [_Float4!], doubles: [Float!], bigDecimals: [BigDecimal!], dates: [_Date!], dateTimes: [_DateTime!], offsetDateTimes: [_OffsetDateTime!], times: [_Time!], booleans: [Boolean!]): String
+  merge(limit: Int, offset: Int, sort: [_SortCriterionSpecification!]): _MergedEntitiesCollection!
 }
 
 type _R_Event implements _Reference {
