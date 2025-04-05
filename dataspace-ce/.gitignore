@@ -134,4 +134,4 @@ dist/
 .code-workspace
 .vscode/settings.json
 
-./files/resources/src-model/model
+/files/resources/src-model/model
