@@ -6,7 +6,7 @@ export default function Home() {
       <div className="max-w-4xl mx-auto">
         <h1 className="text-3xl font-bold mb-8">Simple DS GQL Generator</h1>
         <div className="bg-white rounded-lg shadow p-6">
-          <TestQuery />
+          {/* <TestQuery /> */}
         </div>
       </div>
     </div>
