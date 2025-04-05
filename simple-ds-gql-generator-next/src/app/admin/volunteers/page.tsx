@@ -116,15 +116,15 @@ export default function VolunteersPage() {
           </button>
         </div>
         <AdminChoice/>
-        <div className="bg-white shadow-md rounded-xl p-6 py-12 m-20 relative">
-          <h2 className="text-lg font-semibold mb-4">Волонтёры</h2>
+        <div className="bg-white shadow-md rounded-xl p-6 py-12 m-20 relative flex flex-col">
+          <h2 className="text-lg font-semibold mb-6 text-center">Волонтёры</h2>
 
           <img
             src="/heart.svg"
             alt="heart"
             className="w-15 h-15 absolute top-4 right-4"
           />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
             <div>
               <label className="block font-medium mb-1">Фамилия</label>
               <input
@@ -158,7 +158,7 @@ export default function VolunteersPage() {
             </div>
 
             <div>
-              <label className="block font-medium mb-1">Псевдоним (опционально)</label>
+              <label className="block font-medium mb-1">Псевдоним</label>
               <input
                 type="text"
                 placeholder="Введите псевдоним"
@@ -183,7 +183,7 @@ export default function VolunteersPage() {
 
           <button
             onClick={handleSubmit}
-            className="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition"
+            className="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition mx-100 my-6"
           >
             Зарегистрировать
           </button>

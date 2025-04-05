@@ -22,10 +22,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full">
-      <body className={`${montserrat.variable} font-sans antialiased h-full`}>
+      <body 
+        className={`${montserrat.variable} font-sans antialiased h-full`}
+        suppressHydrationWarning
+      >
         <ApolloProvider>
           {children}
-        </ApolloProvider>
+        </ApolloProvider> 
       </body>
     </html>
   );
