@@ -133,3 +133,5 @@ dist/
 # Файлы настроек рабочего пространства
 .code-workspace
 .vscode/settings.json
+
+dataspace-ce/files/resources/src-model/model
