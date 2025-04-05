@@ -2,11 +2,16 @@
   "name": "simple-ds-gql-generator-next",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "get-schema": "graphql-codegen --config codegen.yml",
+    "allgen": "npm run get-schema && npm run gqlgen && npm run formgen",
+    "gqlgen": "node --loader ts-node/esm src/scripts/gqlgen.ts",
+    "formgen": "node --loader ts-node/esm src/scripts/formgen.ts"
   },
   "dependencies": {
     "@apollo/client": "^3.13.6",
@@ -18,6 +23,11 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@graphql-codegen/cli": "^5.0.2",
+    "@graphql-codegen/near-operation-file-preset": "^2.5.0",
+    "@graphql-codegen/typescript": "^4.0.2",
+    "@graphql-codegen/typescript-operations": "^4.0.2",
+    "@graphql-codegen/typescript-react-apollo": "^4.2.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -25,6 +35,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.2.4",
     "tailwindcss": "^4",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   }
 }

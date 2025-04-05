@@ -1,0 +1,16 @@
+fragment VolonteerAttributes on _E_Volonteer {
+  id
+  __typename
+  nickName
+  person {
+    entityId
+  }
+}
+
+mutation createVolonteer($input: _CreateVolonteerInput!) {
+  packet {
+    createVolonteer(input: $input) {
+      ...VolonteerAttributes
+    }
+  }
+} 

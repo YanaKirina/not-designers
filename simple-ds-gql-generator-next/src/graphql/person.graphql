@@ -1,0 +1,15 @@
+fragment PersonAttributes on _E_Person {
+  id
+  __typename
+  firstName
+  lastName
+  birthDate
+}
+
+mutation createPerson($input: _CreatePersonInput!) {
+  packet {
+    createPerson(input: $input) {
+      ...PersonAttributes
+    }
+  }
+} 
