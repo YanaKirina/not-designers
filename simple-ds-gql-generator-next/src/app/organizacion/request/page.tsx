@@ -2,8 +2,20 @@
 
 import React, { useState, ChangeEvent } from 'react';
 
+function formatDateForGraphQL(dateStr: string): string {
+  const [day, month, year] = dateStr.split('.');
+  return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}T00:00:00Z`;
+}
+
+interface FormData {
+  organization: string;
+  startDate: string;
+  endDate: string;
+  description: string;
+}
+
 export default function Home() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     organization: '',
     startDate: '',
     endDate: '',
@@ -21,28 +33,143 @@ export default function Home() {
     }));
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     setIsLoading(true);
     setError(null);
-    setSuccess(false);
 
     try {
-      const response = await fetch('/api/organization/request', {
+      // Сначала ищем организацию
+      const searchResponse = await fetch('/api/graphql', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          query: `
+            query searchOrganization {
+              searchOrganization {
+                elems {
+                  id
+                  name
+                }
+              }
+            }
+          `
+        }),
       });
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Something went wrong');
+      if (!searchResponse.ok) {
+        const errorData = await searchResponse.json();
+        throw new Error(errorData.error || 'Ошибка при поиске организации');
       }
 
+      const searchData = await searchResponse.json();
+      if (searchData.errors) {
+        throw new Error('Ошибка при поиске организации: ' + searchData.errors[0].message);
+      }
+
+      // Ищем организацию по имени в результатах
+      const existingOrg = searchData.data.searchOrganization.elems.find(
+        (org: { name: string }) => org.name === formData.organization
+      );
+
+      let organizationId;
+      if (existingOrg) {
+        // Используем существующую организацию
+        organizationId = existingOrg.id;
+        console.log('Найдена организация:', existingOrg);
+      } else {
+        // Создаем новую организацию
+        const createResponse = await fetch('/api/graphql', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          body: JSON.stringify({
+            query: `
+              mutation createOrganization($input: _CreateOrganizationInput!) {
+                createOrganization(input: $input) {
+                  id
+                  name
+                }
+              }
+            `,
+            variables: {
+              input: {
+                name: formData.organization
+              }
+            }
+          }),
+        });
+
+        if (!createResponse.ok) {
+          const errorData = await createResponse.json();
+          throw new Error(errorData.error || 'Ошибка при создании организации');
+        }
+
+        const createData = await createResponse.json();
+        if (createData.errors) {
+          throw new Error('Ошибка при создании организации: ' + createData.errors[0].message);
+        }
+
+        organizationId = createData.data.createOrganization.id;
+        console.log('Создана новая организация:', createData.data.createOrganization);
+      }
+
+      // Создаем событие
+      const eventResponse = await fetch('/api/graphql', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          query: `
+            mutation createEvent($input: _CreateEventInput!) {
+              packet {
+                createEvent(input: $input) {
+                  id
+                  description
+                  startDateTime
+                  endDateTime
+                  organization {
+                    id
+                    name
+                  }
+                }
+              }
+            }
+          `,
+          variables: {
+            input: {
+              description: formData.description,
+              startDateTime: formatDateForGraphQL(formData.startDate),
+              endDateTime: formatDateForGraphQL(formData.endDate),
+              organization: organizationId,
+              statusForX: {
+                code: "DRAFT",
+                reason: "New event created"
+              }
+            }
+          }
+        }),
+      });
+
+      if (!eventResponse.ok) {
+        const errorData = await eventResponse.json();
+        throw new Error(errorData.error || 'Ошибка при создании события');
+      }
+
+      const eventData = await eventResponse.json();
+      if (eventData.errors) {
+        throw new Error('Ошибка при создании события: ' + eventData.errors[0].message);
+      }
+
+      console.log('Событие создано:', eventData.data.packet.createEvent);
       setSuccess(true);
-      // Reset form
       setFormData({
         organization: '',
         startDate: '',
@@ -50,7 +177,8 @@ export default function Home() {
         description: ''
       });
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred');
+      console.error('Ошибка при отправке формы:', err);
+      setError(err instanceof Error ? err.message : 'Произошла ошибка при отправке формы');
     } finally {
       setIsLoading(false);
     }
