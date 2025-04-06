@@ -117,7 +117,7 @@ export default function VolunteersPage() {
         </div>
         <AdminChoice/>
         <div className="bg-white shadow-md rounded-xl p-6 py-12 m-20 relative flex flex-col">
-          <h2 className="text-lg font-semibold mb-6 text-center">Волонтёры</h2>
+          <h2 className="text-lg font-semibold mb-6 text-center text-black">Волонтёры</h2>
 
           <img
             src="/heart.svg"
@@ -126,45 +126,45 @@ export default function VolunteersPage() {
           />
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
             <div>
-              <label className="block font-medium mb-1">Фамилия</label>
+              <label className="block font-medium mb-1 text-black">Фамилия</label>
               <input
                 type="text"
                 placeholder="Введите фамилию"
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
-                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none"
+                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none text-black"
               />
             </div>
 
             <div>
-              <label className="block font-medium mb-1">Имя</label>
+              <label className="block font-medium mb-1 text-black">Имя</label>
               <input
                 type="text"
                 placeholder="Введите Имя"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
-                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none"
+                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none text-black"
               />
             </div>
 
             <div>
-              <label className="block font-medium mb-1">День рождения</label>
+              <label className="block font-medium mb-1 text-black">День рождения</label>
               <input
                 type="date"
                 value={birthDate}
                 onChange={(e) => setBirthDate(e.target.value)}
-                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none"
+                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none text-black"
               />
             </div>
 
             <div>
-              <label className="block font-medium mb-1">Псевдоним</label>
+              <label className="block font-medium mb-1 text-black">Псевдоним</label>
               <input
                 type="text"
                 placeholder="Введите псевдоним"
                 value={nickName}
                 onChange={(e) => setNickName(e.target.value)}
-                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none"
+                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none text-black"
               />
             </div>
           </div>
@@ -183,7 +183,7 @@ export default function VolunteersPage() {
 
           <button
             onClick={handleSubmit}
-            className="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition mx-100 my-6"
+            className="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition mx-auto my-6 w-[240px]"
           >
             Зарегистрировать
           </button>
