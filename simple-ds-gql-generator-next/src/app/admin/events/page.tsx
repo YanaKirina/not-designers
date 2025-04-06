@@ -31,7 +31,7 @@ const SEARCH_EVENT = gql`
   ${EVENT_ATTRIBUTES}
 `
 
-export default function EventsPage() {
+export default function EventsPage() {      name
   const { data, loading, error } = useQuery<SearchEventQuery>(SEARCH_EVENT)
 
   const formatDate = (dateString: string | null | undefined) => {
