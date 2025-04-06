@@ -25,8 +25,9 @@ export default function Home() {
           font-bold
           text-xl
           ml-4
+          mt-6
         ">
-          организация
+          Организация
         </div>
   
         {/* Page title with 81px margin top */}
@@ -85,6 +86,7 @@ export default function Home() {
             </div>
           </Link>
           {/* Container 2 */}
+          
           <Link href="/organizacion/volunteer" passHref>
           <div className="
             w-[365px]
@@ -121,6 +123,7 @@ export default function Home() {
           </div>
           </Link>
           {/* Container 3 */}
+          <Link href="/organizacion/work" passHref>
           <div className="
             w-[365px]
             h-[333px]
@@ -154,6 +157,7 @@ export default function Home() {
               className="absolute bottom-[18px] left-[18px]"
             />
           </div>
+          </Link>
         </div>
       </div>
     </main>

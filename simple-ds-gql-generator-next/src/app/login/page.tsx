@@ -12,11 +12,11 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center">
+    <div className="relative min-h-screen w-full flex items-center justify-center">
 
       <div className="absolute inset-0  bg-gradient-to-b from-[#B4ECCF] via-[#AFDDE1] to-[#D7EEEA] via-50% to-80% flex flex-col justify-end items-center">
 
-        <div className="absolute top-10 left-1/2 transform -translate-x-1/2 lg:left-0 lg:transform-none lg:inset-0 lg:flex lg:items-center lg:pl-48 z-10">
+        <div className="absolute top-10  lg:transform-none lg:inset-0 lg:flex lg:items-center lg:pl-48 z-10">
           <h1 className="text-7xl font-bold"><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#74C582] to-[#284122] text-7xl">Сбер</span><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E372FF] to-[#781092] text-7xl">Волонтёры</span></h1>
         </div>
       </div>

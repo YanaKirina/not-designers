@@ -9,13 +9,13 @@ export default function HomePage() {
       <div className="relative container px-6 flex flex-col">
         <div className="flex justify-between items-start pt-20">
           <div className="flex flex-col items-start pt-9 ml-14 w-1/2">
-            <h1 className="text-7xl leading-[1.6] mt-10 mb-10 md:text-7xl lg:text-8xl font-light text-[#2E2E2E]">
+            <h1 className="text-7xl leading-[1.3] mt-10 mb-10 md:text-7xl lg:text-8xl font-light text-[#2E2E2E]">
               Делай мир лучше вместе со
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#74C582] to-[#282727]"> Сбером</span>
             </h1>
             
             <Link href="/" passHref>
-              <button className="bg-gradient-to-r from-[#E372FF] to-[#781092] text-white text-2xl mt-2 px-16 py-4 rounded-[20px] font-medium hover:opacity-90 transition-all hover:scale-105 shadow-lg shadow-[484848]/50">
+              <button className="bg-gradient-to-r from-[#E372FF] to-[#781092] text-white text-2xl mt-2 mb-6 px-16 py-4 rounded-[20px] font-medium hover:opacity-90 transition-all hover:scale-105 shadow-lg shadow-[484848]/50">
                 Начать сейчас
               </button>
             </Link>
@@ -63,20 +63,21 @@ export default function HomePage() {
             <img 
               src="/main_page/smart_cat.svg" 
               alt="Smart Cat" 
-              className="max-h-[400px] h-auto object-contain -mt-1 translate-x-[-230%]"
+              className="max-h-[400px] h-auto object-contain -mt-1 translate-x-[-80%]"
             />
           </div>
         </div>
 
 
         <div className="relative mt-0 z-10">
-            <div className="relative bg-[#ffffff5b] rounded-[30px] p-12 shadow-xl w-full h-[550px]">
+            <div className="relative bg-[#ffffff5b] rounded-[30px] p-12 shadow-xl w-full h-[550px] mb-8">
               <div className="h-full p-12 flex flex-col">
                 <div className="flex-grow">
-                  <h2 className="w-[80%] leading-[1.6] text-5xl font-normal text-gray-800 mb-6"><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#74C582] to-[#284122] text-7xl">Давайте делать добро вместе!</span><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E372FF] to-[#781092] text-7xl">Скорее смотри ближайшие события!</span>
+                  <h2 className="w-[80%] leading-[1.6] text-5xl font-normal text-gray-800 mb-6"><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#74C582] to-[#284122] text-7xl">Давай делать добро вместе!</span>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E372FF] to-[#781092] text-7xl">Скорее смотри ближайшие события!</span>
                   </h2>
                 </div>
-                  <Link href="" passHref>
+                  <Link href="/volunter/voluntar_events" passHref>
                     <button className="bg-gradient-to-r from-[#E372FF] to-[#781092] text-white text-2xl mt-2 px-16 py-4 rounded-[20px] font-medium hover:opacity-90 transition-all hover:scale-105 shadow-lg shadow-[484848]/50">
                       Ближайшие события
                     </button>

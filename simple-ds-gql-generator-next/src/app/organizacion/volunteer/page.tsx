@@ -82,7 +82,7 @@ export default function VolunteerApplications() {
       
       <div className="pt-[81px] px-4">
         <div className="w-[211px] h-[36px] flex items-center justify-center rounded-[10px] bg-gradient-to-r from-[#E372FF] to-[#781092] text-white font-bold text-xl ml-4">
-          организация
+          Организация
         </div>
 
         <div className="flex flex-col items-center mt-6">

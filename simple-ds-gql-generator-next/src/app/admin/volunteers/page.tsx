@@ -111,7 +111,7 @@ export default function VolunteersPage() {
     <main className="min-h-screen bg-gray-50 p-11">
       <div className="w-full h-full flex flex-col justify-between item-center">
         <div className="py-10">
-          <button className="bg-gradient-to-r from-pink-400 to-purple-600 text-white px-3 py-1 rounded-full font-semibold text-sm">
+          <button className="bg-gradient-to-r from-pink-400 to-purple-600 text-white px-3 py-1 rounded-full font-semibold text-sm mt-4">
             Администратор
           </button>
         </div>

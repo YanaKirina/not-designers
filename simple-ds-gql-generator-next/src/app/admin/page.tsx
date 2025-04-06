@@ -23,6 +23,7 @@ export default function Home() {
           font-sans
           font-bold
           text-xl
+          mt-8
           ml-4
         ">
           Администратор
