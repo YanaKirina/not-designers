@@ -2,13 +2,62 @@
 'use client'
 
 import { useState } from 'react'
+import { useMutation } from '@apollo/client'
+import { CreateOrganizationMutation, CreateOrganizationMutationVariables } from '@/__generate/types'
+import { AdminChoice } from '@/components/AdminChoice'
+import { gql } from '@apollo/client'
+
+const ORGANIZATION_ATTRIBUTES = gql`
+  fragment OrganizationAttributes on _E_Organization {
+    id
+    __typename
+    name
+  }
+`
+
+const CREATE_ORGANIZATION = gql`
+  mutation createOrganization($input: _CreateOrganizationInput!) {
+    packet {
+      createOrganization(input: $input) {
+        ...OrganizationAttributes
+      }
+    }
+  }
+  ${ORGANIZATION_ATTRIBUTES}
+`
 
 export default function OrganizersPage() {
   const [orgName, setOrgName] = useState('')
+  const [error, setError] = useState<string | null>(null)
+  const [success, setSuccess] = useState(false)
 
-  const handleSubmit = () => {
-    console.log({ orgName })
-    // Тут можешь добавить свою логику отправки
+  const [createOrganization] = useMutation<CreateOrganizationMutation, CreateOrganizationMutationVariables>(CREATE_ORGANIZATION)
+
+  const handleSubmit = async () => {
+    try {
+      setError(null)
+
+      if (!orgName.trim()) {
+        throw new Error('Название организации не может быть пустым')
+      }
+
+      await createOrganization({
+        variables: {
+          input: {
+            name: orgName
+          }
+        }
+      })
+
+      setSuccess(true)
+      setOrgName('')
+      
+      // Скрываем сообщение об успехе через 3 секунды
+      setTimeout(() => setSuccess(false), 3000)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Произошла ошибка при регистрации организации')
+      console.error('Ошибка регистрации:', err)
+    }
   }
 
   return (
@@ -56,6 +105,18 @@ export default function OrganizersPage() {
               className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none"
             />
           </div>
+
+          {error && (
+            <div className="mb-4 text-red-600">
+              {error}
+            </div>
+          )}
+
+          {success && (
+            <div className="mb-4 text-green-600">
+              Организация успешно зарегистрирована!
+            </div>
+          )}
 
           {/* Кнопка */}
           <button

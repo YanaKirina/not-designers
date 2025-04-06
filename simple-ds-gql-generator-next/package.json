@@ -17,6 +17,7 @@
     "@apollo/client": "^3.13.6",
     "@next/font": "^14.2.15",
     "graphql": "^16.10.0",
+    "keycloak-js": "^25.0.2",
     "next": "15.2.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
