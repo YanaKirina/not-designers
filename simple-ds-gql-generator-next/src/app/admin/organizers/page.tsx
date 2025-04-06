@@ -73,7 +73,7 @@ export default function OrganizersPage() {
         <AdminChoice />
 
         {/* Карточка формы */}
-        <div className="bg-white shadow-md rounded-xl p-6 py-12 m-20 relative flex flex-col">
+        <div className="bg-white shadow-md rounded-xl p-6 py-12 m-20 relative flex flex-col ">
           <h2 className="text-lg font-semibold mb-6 text-center text-black">Организаторы</h2>
 
           {/* Сердечко */}
