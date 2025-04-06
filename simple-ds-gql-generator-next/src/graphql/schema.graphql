@@ -1,0 +1,35 @@
+enum Role {
+  ADMIN
+  ORGANIZER
+  VOLUNTEER
+}
+
+type User {
+  id: ID!
+  email: String!
+  login: String!
+  role: Role!
+  createdAt: String!
+  updatedAt: String!
+}
+
+input RegisterInput {
+  email: String!
+  login: String!
+  password: String!
+  role: Role!
+}
+
+type RegisterResponse {
+  success: Boolean!
+  message: String!
+  user: User
+}
+
+type Query {
+  me: User
+}
+
+type Mutation {
+  register(input: RegisterInput!): RegisterResponse!
+} 

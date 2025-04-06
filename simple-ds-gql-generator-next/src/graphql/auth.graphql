@@ -1,0 +1,27 @@
+fragment CustomerFields on _E_Customer {
+  id
+  login
+  email
+}
+
+mutation addCustomerInfo($login: String!, $email: String!) {
+  packet {
+    updateOrCreateCustomer(
+      input: {
+        id: ID!
+        login: $login
+        email: $email
+      }
+      exist: {
+        update: {
+          login: $login
+          email: $email
+        }
+      }
+    ) {
+      returning {
+        ...CustomerFields
+      }
+    }
+  }
+} 

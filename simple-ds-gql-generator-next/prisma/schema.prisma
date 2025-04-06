@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["multiSchema"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  schemas  = ["sber_volunteers"]
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  login     String   @unique
+  password  String
+  role      Role     @default(VOLUNTEER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@schema("sber_volunteers")
+}
+
+enum Role {
+  ADMIN
+  ORGANIZER
+  VOLUNTEER
+
+  @@schema("sber_volunteers")
+} 
