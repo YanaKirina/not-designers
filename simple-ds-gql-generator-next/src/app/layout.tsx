@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { ApolloProvider } from '@/components/ApolloProvider';
+import {Header} from "@/components/Header"
 
 const montserrat = Montserrat({
   subsets: ["latin", "cyrillic"],
@@ -24,6 +25,7 @@ export default function RootLayout({
     <html lang="en" className="h-full">
       <body className={`${montserrat.variable} font-sans antialiased h-full`}>
         <ApolloProvider>
+          <Header></Header>
           {children}
         </ApolloProvider>
       </body>
