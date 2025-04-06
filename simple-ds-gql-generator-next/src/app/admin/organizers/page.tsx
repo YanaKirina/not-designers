@@ -8,6 +8,8 @@ import { CreateOrganizationMutation, CreateOrganizationMutationVariables } from 
 import { AdminChoice } from '../../../components/AdminChoice'
 import { gql } from '@apollo/client'
 
+
+
 const ORGANIZATION_ATTRIBUTES = gql`
   fragment OrganizationAttributes on _E_Organization {
     id

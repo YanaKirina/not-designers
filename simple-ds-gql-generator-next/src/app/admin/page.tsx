@@ -1,14 +1,13 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#F3F5F7]">
       {/* Header would go here */}
-      
       {/* Main content container with 81px top padding */}
       <div className="pt-[81px] px-4">
         {/* Organization rectangle */}
@@ -26,7 +25,7 @@ export default function Home() {
           text-xl
           ml-4
         ">
-          организация
+          Администратор
         </div>
   
         {/* Page title with 81px margin top */}
@@ -50,7 +49,7 @@ export default function Home() {
           mt-[81px] mb-[70px]
         ">
           {/* Container 1 */}
-          <Link href="/organizacion/request" passHref>
+          <Link href="/admin/organizers" passHref>
             <div className="
                 w-[365px]
                 h-[333px]
@@ -62,14 +61,11 @@ export default function Home() {
                 flex flex-col
             ">
                 <div className="flex flex-col items-center">
-                <div className="text-[30px] font-sans font-normal text-center mt-[18px]">Создать событие</div>
-                <div className="text-[20px] text-[#A3A0A0] text-center mt-[36px]">
-                    Подать заявку на событие - Закрыть событие
-                </div>
+                <div className="text-[30px] font-sans font-normal text-center mt-[18px]">Регистрировать организатора</div>
                 </div>
                 <div className="flex-grow"></div>
                 <Image
-                src="/organizacion/menu1.svg"
+                src="/administration/AMenu1.svg"
                 alt="Картинка 1"
                 width={126}
                 height={126}
@@ -85,6 +81,7 @@ export default function Home() {
             </div>
           </Link>
           {/* Container 2 */}
+          <Link href="/admin/volunteers" passHref>
           <div className="
             w-[365px]
             h-[333px]
@@ -97,14 +94,12 @@ export default function Home() {
             min-[989px]:mt-0 
           ">
             <div className="flex flex-col items-center">
-              <div className="text-[30px] font-sans font-normal text-center mt-[18px]">Заявки волонтеров</div>
-              <div className="text-[20px] text-[#A3A0A0] text-center mt-[36px]">
-                Согласовывать или отменить заявки волонтеров
-              </div>
+              <div className="text-[30px] font-sans font-normal text-center mt-[18px]">Регестрировать Волонтера</div>
+
             </div>
             <div className="flex-grow"></div>
             <Image
-              src="/organizacion/menu2.svg"
+              src="/administration/AMenu2.svg"
               alt="Картинка 2"
               width={130}
               height={110}
@@ -118,8 +113,11 @@ export default function Home() {
               className="absolute bottom-[18px] left-[18px]"
             />
           </div>
+          </Link>
           
           {/* Container 3 */}
+          
+          <Link href="/admin/events" passHref>
           <div className="
             w-[365px]
             h-[333px]
@@ -132,14 +130,11 @@ export default function Home() {
             min-[989px]:mt-0 
           ">
             <div className="flex flex-col items-center">
-              <div className="text-[30px] font-sans font-normal text-center mt-[18px]">Работа волонтеров</div>
-              <div className="text-[20px] text-[#A3A0A0] text-center mt-[36px]">
-                Подтвердить факт работы волонтера по итогам события
-              </div>
+              <div className="text-[30px] font-sans font-normal text-center mt-[18px]">Согласовать события</div>
             </div>
             <div className="flex-grow"></div>
             <Image
-              src="/organizacion/menu3.svg"
+              src="/administration/AMenu3.svg"
               alt="Картинка 3"
               width={130}
               height={130}
@@ -153,8 +148,10 @@ export default function Home() {
               className="absolute bottom-[18px] left-[18px]"
             />
           </div>
+          </Link>
         </div>
       </div>
     </main>
   );
 }
+

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, ChangeEvent } from 'react';
+import Link from 'next/link';
 
 function formatDateForGraphQL(dateStr: string): string {
   const [day, month, year] = dateStr.split('.');
@@ -186,6 +187,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-[#F3F5F7] font-montserrat">
+      
       <div className="pt-[81px] px-4 relative">
         <div className="
           w-[211px]
